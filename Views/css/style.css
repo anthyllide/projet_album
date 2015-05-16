@@ -1,0 +1,215 @@
+* {
+margin : 0px;
+padding : 0px;
+}
+
+body {
+background : url(../../images/fond.jpg) no-repeat center top;
+}
+
+#wrapper {
+width : 990px;
+margin : 0 auto;
+padding : 10px 0 10px 0;
+border-radius : 10px;
+background-color : white; 
+}
+
+header {
+width : 960px;
+height : 150px;
+margin : 0 auto;
+background-image: radial-gradient(circle at center, #ffffff, #cacaca);
+border-radius : 10px;
+box-shadow: 10px 10px 5px #e9e7e4;
+position : relative;
+}
+
+header #logo, header h1 {
+float : left;
+}
+
+header #logo {
+margin : 10px 0 0 20px;
+}
+
+header h1 {
+font-family: 'Indie Flower', cursive, Arial;
+font-size : 70px;
+margin : 20px 0 0 70px;
+}
+
+header h1 span {
+font-size : 90px;
+color : #e5860c;
+}
+
+/* par rapport à header */
+#login {
+position : absolute;
+top : 5px;
+right : 20px;
+font-family: Arial;
+font-size : 20px;
+}
+
+#login p {
+position : relative;
+top : -2px;
+font-family: Arial;
+font-size : 10px;
+}
+
+#login a {
+text-decoration : none;
+color : #e5860c;
+}
+
+#login:hover a{
+color : black;
+text-decoration : underline; 
+}
+
+#intro {
+width : 900px;
+margin : 30px auto;
+font-family: Arial;
+font-size : 14px;
+text-align : justify;
+}
+
+#intro p {
+margin-top : 10px;
+}
+
+.clear {
+clear : both;
+}
+
+footer {
+height : 40px;
+width : 900px;
+border-top : 1px solid  #cacaca;
+font-family: Arial;
+font-size : 14px;
+font-style: italic;
+line-height : 40px;
+text-align : center;
+margin: 20px auto;
+}
+
+nav ul {
+width : 900px;
+height: 40px;
+margin : 10px auto;
+}
+
+nav ul li {
+float : left;
+width : 32px;
+list-style : none;
+border : solid 1px #ded6cc; 
+text-align : center;
+}
+
+nav ul li a {
+text-decoration : none;
+color : black;
+font-family: 'Indie Flower', cursive, Arial;
+font-size : 15px;
+font-weight : bold;
+}
+
+nav ul li:hover {
+box-shadow: 5px 5px 5px #e9e7e4;
+border-top:2px;
+border-bottom:2px;
+border-style : solid;
+border-color : #ded6cc; 
+}
+
+nav ul li:hover a {
+color : #e5860c;
+}
+
+div#contenu article h2 {
+margin-left : 45px;
+color : #e5860c;
+}
+
+div#miniatures {
+width : 900px;
+margin : 30px auto;
+}
+
+div#miniatures img {
+width : 150px;
+height : 150px;
+margin-right : 18px;
+margin-left : 5px;
+margin-bottom : 30px;
+border : 1px solid black;
+}
+
+#upload_h1{
+margin : 20px;
+font-family: Arial;
+font-size : 20px;
+color : #e5860c;
+}
+
+form {
+width : 900px;
+height : 300px;
+padding : 20px;
+}
+
+form label {
+font-family: Arial;
+font-size : 14px;
+font-weight : bold;
+}
+
+form p {
+font-family: Trebuchet;
+font-size: 12px;
+margin: 5px 0 0 200px;
+}
+
+form div#form_select, form div#form_theme, form div#form_upload {
+width : 700px;
+height : 40px;
+padding : 10px 0px;
+margin-bottom : 20px;
+}
+
+form select {
+width : 200px;
+height: 25px;
+margin-left : 30px;
+}
+
+form div#form_theme input#new_theme {
+width : 200px;
+height: 25px;
+margin-left : 20px;
+padding-left : 5px;
+}
+
+form div#form_upload input#upload {
+width : 200px;
+height: 25px;
+margin-left : 30px;
+}
+
+form div#form_upload input#upload_submit {
+height: 25px;
+cursor : pointer;
+margin-left : 15px;
+}
+
+form div#form_theme input#theme_submit {
+height: 25px;
+cursor : pointer;
+margin-left : 10px;
+}
