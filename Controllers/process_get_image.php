@@ -1,4 +1,4 @@
-<?
+<?php
 $image = new Image();
 
 $display_images = $image -> getImage ();

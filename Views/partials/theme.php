@@ -18,9 +18,15 @@
 		?>
 		<h3><a href="?id=<?php echo $_GET['id']; ?>&theme=<?php echo $value;?>"><?php echo $value; ?></a></h3>
 		
-		<div id=miniatures>
 	<?php
-	
+		}
+		?>
+		<div id=miniatures>
+		<?php if (!empty($_GET['theme'])){
+		?>
+		<h2>Images du thème <?php echo $_GET['theme'];?></h2>
+		<?php
+		}
 		if(isset($image_theme)){
 		
 		foreach($image_theme as $table){
@@ -36,7 +42,7 @@
 		
 		</div>
 		<?php
-		}
+		
 		
 	}
 

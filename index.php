@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once ('config.php'); 
-require_once('Models/Theme.class.php');
-require_once ('Models/Image.class.php');
+require('autoload.php');
+require_once ('Controllers/process_get_image.php');
 require_once ('Controllers/process_menu.php');
 require_once ('Controllers/process_img_theme.php');
 

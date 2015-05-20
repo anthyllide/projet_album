@@ -80,6 +80,7 @@ public function getImageByTheme ($theme) {
 				
 				}
 			}	
+		
 		return $images;					
 			
 }
