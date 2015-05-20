@@ -7,10 +7,10 @@ public function __construct() {
 }
 
 //Affichage des 10 dernières miniatures page accueil 
-public function getImage ($filename, $theme){
+public function getImage (){
 
-	i=0;
-
+	$i=1;
+	
 	$bdd = new Bdd;
 	
 	$rep = $bdd -> query ('SELECT filenameTiny, theme FROM images ORDER BY IDimage DESC LIMIT 10'); 
@@ -22,28 +22,69 @@ public function getImage ($filename, $theme){
 			
 			while ($donnees = $rep -> fetch())
 			{
-		
+				
 				$path = THUMBNAILS_REP_DIR_PATH.$donnees ['theme'].'/'.$donnees['filenameTiny'];
 				
-				var_dump ($path);
-				
-				if (file_exists($path))
+				if (!file_exists($path))
 				{
-		
-				$images [$i] ['thumb'] = $donnees ['filenameTiny'];
-				
-				return $images;
-		
-				$i++;
+					return false;
 				}
 				else
 				{
-				$msg_error = 'L\'image n\'existe pas sur le serveur.';
-				return $msg_error;
+				
+				$images[$i] [$donnees ['theme']]  = $donnees['filenameTiny'];
+				
+				$i++;
+				
+		
 				}
 			}	
+		return $images;					
+			
 		}
+		else
+		{
+			return false ;
+		}
+
 }
+
+//Affichage des images par thème
+public function getImageByTheme ($theme) {
+	
+	$theme = strtolower($theme);
+	
+	$i=1;
+	
+	$bdd = new Bdd;
+	
+	$rep = $bdd -> prepare ('SELECT filenameTiny, theme FROM images WHERE theme = ? ORDER BY IDimage'); 
+	
+	$rep -> execute (array($theme));
+	
+			while ($donnees = $rep -> fetch())
+			{
+				
+				$path = THUMBNAILS_REP_DIR_PATH.$theme.'/'.$donnees['filenameTiny'];
+				
+				if (!file_exists($path))
+				{
+					return false;
+				}
+				else
+				{
+				
+				$images[$i][$donnees['theme']] = $donnees['filenameTiny'];
+				
+				$i++;
+				
+				}
+			}	
+		return $images;					
+			
+}
+
+
 
 
 //on renomme les images

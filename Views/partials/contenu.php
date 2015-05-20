@@ -4,17 +4,25 @@
 
 <div id=miniatures>
 <?php
-print_r ($images);
 
-if(isset ($images)){
-	foreach ($images as $id => $value)
-	{
+if (isset($images)){
+	
+	foreach($images as $id => $value){
+		
+		foreach ($value as $theme => $image){
+			
+		
+			
 	?>
-	<img src="<?php echo $value?>" alt="" />
+	
+		<img src="<?php echo 'http://'.THUMBNAIL_DIR_URL.$theme.'/'.$image ; ?>" alt="" />
 	<?php
-	}
+		}
+	}	
 }
-	?>
+
+	
+?>
 </div>
 
 

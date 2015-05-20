@@ -16,9 +16,24 @@
 		foreach ($title_theme as $value)
 		{
 		?>
-		<h3><?php echo $value; ?></h3>
+		<h3><a href="?id=<?php echo $_GET['id']; ?>&theme=<?php echo $value;?>"><?php echo $value; ?></a></h3>
+		
 		<div id=miniatures>
-		<img src="images/fotolia_01.jpg" alt="" />
+	<?php
+	
+		if(isset($image_theme)){
+		
+		foreach($image_theme as $table){
+			foreach ($table as $theme => $display){
+	?>
+			<img src="<?php echo 'http://'.THUMBNAIL_DIR_URL.$theme.'/'.$display ; ?>" alt="" />
+			<?php
+			}
+		}
+	}
+	?>
+		 
+		
 		</div>
 		<?php
 		}

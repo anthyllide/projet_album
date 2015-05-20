@@ -2,7 +2,9 @@
 session_start();
 require_once ('config.php'); 
 require_once('Models/Theme.class.php');
-require_once ('Controllers/process_theme.php');
+require_once ('Models/Image.class.php');
+require_once ('Controllers/process_menu.php');
+require_once ('Controllers/process_img_theme.php');
 
 
 ?>
@@ -52,8 +54,7 @@ if (isset($msg_error)){
 <?php 
 }
 
-if (isset($_GET['id'])){
-require_once ('Controllers/process_menu.php');
+if (!empty($_GET['id'])) {
 require ('Views/partials/theme.php'); 
 }
 else

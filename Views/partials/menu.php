@@ -12,7 +12,7 @@ if ($menu !== false)
 	foreach($menu as $IDmenu => $value)
 	{
 	?>
-	<li><a href="index.php?id=<?php echo $IDmenu+1;?>"><?php echo $value;?></a></li>
+	<li><a href="?id=<?php echo $IDmenu+1;?>"><?php echo $value;?></a></li>
 	<?php
 	}
 	?>

@@ -1,6 +1,6 @@
 <header>
 <div id="logo">
-<img src="<?php echo IMAGES_DIR_URL.'/logo.jpg'; ?>" alt="logo" />
+<a href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/'.WEB_DIR_NAME.'/index.php'; ?>"><img src="<?php echo IMAGES_DIR_URL.'/logo.jpg'; ?>" alt="logo" /></a>
 </div>
 
 <h1><span>A</span>lbum photos</h1>

@@ -1,4 +1,5 @@
 <?php
+if(!empty($_GET['id'])){
 	$id = strip_tags($_GET['id']);
 
 	$theme3 = new Theme;
@@ -18,9 +19,12 @@
 		
 	$letter = $selectLetter;
 	$title_theme = $displayTheme;
-			
-		
-	}
+
+	}		
+}		
+	
+	
+	
 	
 	
 	
