@@ -65,7 +65,7 @@ text-decoration : none;
 color : #e5860c;
 }
 
-#login:hover a{
+#login:hover a, h3.title_theme a:hover{
 color : black;
 text-decoration : underline; 
 }
@@ -137,12 +137,12 @@ margin-left : 45px;
 color : #e5860c;
 }
 
-div#miniatures {
+div#miniatures, div.miniatures_theme {
 width : 900px;
 margin : 30px auto;
 }
 
-div#miniatures img {
+div#miniatures img, div.miniatures_theme img {
 width : 150px;
 height : 150px;
 margin-right : 18px;
@@ -212,4 +212,61 @@ form div#form_theme input#theme_submit {
 height: 25px;
 cursor : pointer;
 margin-left : 10px;
+}
+
+h2.letter {
+margin : 0 0 10px 47px;
+}
+
+div.theme_h3 {
+margin : 20px 0 30px 40px;
+}
+
+h3.title_theme{
+display : inline;
+margin-left : 10px;
+}
+
+h3.title_theme a{
+text-decoration : none;
+font-family: Arial;
+font-size : 16px;
+color : #e5860c;
+}
+
+div.miniatures_theme h2{
+margin: 0 0 30px 3px;
+height : 30px;
+width : 400px;
+border : 1px grey solid;
+font-family: Arial;
+font-size : 14px;
+line-height : 30px;
+text-align : center;
+background-color : #cacaca;
+box-shadow: 5px 5px 5px #e9e7e4;
+}
+
+.msg_error{
+height : 25px;
+width : 600px;
+font-family: Arial;
+font-size : 12px;
+background-color : #f25952;
+border : 1px solid #ee1a0f;
+margin : 0 auto;
+line-height: 25px;
+text-align : center;
+}
+
+.msg_success{
+height : 25px;
+width : 600px;
+font-family: Arial;
+font-size : 12px;
+background-color : #7de579;
+border : 1px solid #59cb53;
+margin : 0 auto;
+line-height: 25px;
+text-align : center;
 }

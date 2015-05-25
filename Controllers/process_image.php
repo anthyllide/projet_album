@@ -23,9 +23,6 @@ if (isset($_POST['theme'])){
 		}
 	
 	}
-	else
-	{
-	$msg_error = 'Veuillez envoyer vos images sur le serveur';
-	}
+	
 	
 }	

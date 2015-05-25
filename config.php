@@ -39,7 +39,7 @@ define('IMAGES_VRAC_DIR_URL', 'http://'.$_SERVER['HTTP_HOST'].'/'.WEB_DIR_NAME.'
 define('IMAGES_REP_DIR_URL', 'http://'.$_SERVER['HTTP_HOST'].'/'.WEB_DIR_NAME.'/'.IMAGE_REP_DIR_NAME.'/');
 
 //URL web du répertoire images miniatures
-define('THUMBNAIL_DIR_URL', $_SERVER['HTTP_HOST'].'/'.WEB_DIR_NAME.'/'.THUMBNAIL_REP_DIR_NAME.'/');
+define('THUMBNAIL_DIR_URL', 'http://'.$_SERVER['HTTP_HOST'].'/'.WEB_DIR_NAME.'/'.THUMBNAIL_REP_DIR_NAME.'/');
 
 //Dimensions max images
 define('MAX_WIDTH', 600);

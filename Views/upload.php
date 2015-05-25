@@ -1,8 +1,7 @@
 <?php 
 session_start();
 require_once ('../config.php'); 
-require_once('../Models/Theme.class.php');
-require_once('../Models/Image.class.php');
+require ('../autoload_2.php');
 require_once ('../Controllers/process_theme.php');
 require_once ('../Controllers/process_image.php');
 
@@ -37,7 +36,7 @@ if (isset($msg_error)){
 				foreach ($msg_error as $value)
 				{
 				?>
-				<div class="msg_errror">
+				<div class="msg_error">
 				<p><?php echo $value;?></p>
 				</div>
 				<?php 
@@ -46,7 +45,7 @@ if (isset($msg_error)){
 			else
 			{
 			?>
-			<div class="msg_errror">
+			<div class="msg_error">
 			<p><?php echo $msg_error;?></p>
 			</div>
 			<?php 

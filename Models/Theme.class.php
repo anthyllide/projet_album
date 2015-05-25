@@ -126,7 +126,9 @@ class Theme {
 	
 	$select_theme = $this -> selectTheme();
 	
-		if(($select_theme === false) OR(!in_array($new_theme,$select_theme))) 
+	if($select_theme !== false){
+	
+		if (!in_array($new_theme,$select_theme))
 		{
 	
 		$rep = $bdd -> prepare('INSERT INTO folders (theme, lettre) VALUES (:new_theme, :first_letter)');
@@ -141,7 +143,7 @@ class Theme {
 			}
 			else
 			{
-			$msg_error ='Le nouveau thème n\'a pas pu être enregistré';
+			$msg_error ='Le nouveau thÃ¨me n\'a pas pu Ãªtre enregistrÃ©';
 			return $msg_error;
 			}
 	
@@ -150,19 +152,16 @@ class Theme {
 		}
 		else
 		{
-		$msg_error ='Ce theme existe déjà.';
+		$msg_error ='Ce theme existe dÃ©jÃ .';
 		return $msg_error;
 		}
-		
-		
+	}
+	else
+	{
+	$msg_error ='Une erreur s\'est produite lors de la rÃ©cupÃ©ration des thÃ¨mes dans le BDD.';
+	return $msg_error;
+	}
 	
 	}
-
-
-	
-
-
-
-
 
 }

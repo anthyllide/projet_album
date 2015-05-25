@@ -11,11 +11,11 @@ if (isset($images)){
 		
 		foreach ($value as $theme => $image){
 			
-		
+		$url_image = substr($image, 0, -9);
 			
 	?>
 	
-		<img src="<?php echo 'http://'.THUMBNAIL_DIR_URL.$theme.'/'.$image ; ?>" alt="" />
+		<a href="<?php echo IMAGES_REP_DIR_URL.$theme.'/'.$url_image.'.jpg'; ?>" target="_blank"><img src="<?php echo THUMBNAIL_DIR_URL.$theme.'/'.$image ; ?>" alt="" /></a>
 	<?php
 		}
 	}	
