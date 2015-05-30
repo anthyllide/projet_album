@@ -12,6 +12,7 @@ public function getImage (){
 	$i=1;
 	
 	$bdd = new Bdd;
+	$bdd->exec("SET NAMES 'UTF8'");
 	
 	$rep = $bdd -> query ('SELECT filenameTiny, theme FROM images ORDER BY IDimage DESC LIMIT 10'); 
 	
@@ -52,11 +53,18 @@ public function getImage (){
 //Affichage des images par thème
 public function getImageByTheme ($theme) {
 	
-	$theme = strtolower($theme);
+	$theme = mb_strtolower($theme,'UTF-8');
 	
+	$special = array("'",' ','â','à','é','è','ë','ê','ï','ç');
+	
+	$normal = array("_",'_','a','a','e','e','e','e','i','c');
+	
+	$theme = str_replace($special,$normal, $theme);
+	 
 	$i=1;
 	
 	$bdd = new Bdd;
+	$bdd->exec("SET NAMES 'UTF8'");
 	
 	$rep = $bdd -> prepare ('SELECT filenameTiny, theme FROM images WHERE theme = ? ORDER BY IDimage'); 
 	
@@ -91,9 +99,16 @@ public function getImageByTheme ($theme) {
 //on renomme les images
 public function renameImage ($filename,$theme){
 
+	$special = array("'",' ','â','à','é','è','ë','ê','ï','ç');
+	
+	$normal = array('_','_','a','a','e','e','e','e','i','c');
+	
+	$theme = str_replace($special,$normal, $theme);
+
 	$extension = '.jpg';
 	
 	$bdd = new Bdd;
+	$bdd->exec("SET NAMES 'UTF8'");
 	
 	$rep = $bdd -> prepare ('SELECT COUNT(*) AS nb_images FROM images WHERE filename LIKE ? ');
 	
@@ -103,7 +118,7 @@ public function renameImage ($filename,$theme){
 	
 	$i = $donnees['nb_images'];
 	
-	$filename = strtolower($theme).'-image-'.($i+1).$extension;
+	$filename = mb_strtolower($theme,'UTF-8').'-image-'.($i+1).$extension;
 	
 	return $filename;
 	
@@ -127,6 +142,7 @@ public function insertImage ($name, $theme){
 $filename_tiny = $this -> renameThumbnail ($name);
 
 $bdd = new Bdd;
+$bdd->exec("SET NAMES 'UTF8'");
 
 $rep = $bdd -> prepare ('INSERT INTO images (filename, filenameTiny, theme) VALUES (:filename,:filenametiny,:theme)');
 
@@ -152,6 +168,12 @@ $rep -> CloseCursor();
 			
 //créations des images miniatures
 public function createThumbnail ($filename, $theme){
+
+		$special = array("'",' ','â','à','é','è','ë','ê','ï','ç');
+	
+		$normal = array('_','_','a','a','e','e','e','e','i','c');
+	
+		$theme = str_replace($special,$normal, $theme);
 
 		$name_vignette = $this -> renameThumbnail ($filename, $theme);
 
@@ -227,19 +249,27 @@ public function createThumbnail ($filename, $theme){
 									);
 									
 		$extension = basename($type);
-	
 		
+		// test pas d'erreur
+		if($error < 1){
+	
+		    //test extension
 			if (in_array($extension, $extension_autorisees))
 			{
-			
+				//test dimensions images
 				$images_size = getimagesize($tmp_name);
 			
-				if(($images_size[0] < MAX_WIDTH) OR ($images_size[1] < MAX_HEIGHT))
+				if(($images_size[0] <= MAX_WIDTH) AND ($images_size[1] <= MAX_HEIGHT))
 				{
-					if ($error == 0) 
-					{
+				
+						$special = array("'",' ','â','à','é','è','ë','ê','ï','ç');
+	
+						$normal = array('_','_','a','a','e','e','e','e','i','c');
+	
+						$theme = str_replace($special,$normal,$theme);
 					
 						$upload_dir = IMAGE_REP_DIR_PATH.$theme.'/';
+					
 					
 						//creation du répertoire theme s'il n'existe pas
 						if(is_dir($upload_dir) === false){
@@ -301,13 +331,6 @@ public function createThumbnail ($filename, $theme){
 						continue;
 						}
 					
-					}
-					else
-					{
-					$msg_error [$key] = 'Une erreur s\'est produite lors du téléchargement.';
-					continue;
-					}
-					
 				}
 				else
 				{
@@ -320,6 +343,12 @@ public function createThumbnail ($filename, $theme){
 			$msg_error [$key] = 'Seules les images en .jpg sont acceptées.';
 			continue;
 			}
+		}
+		else
+		{
+		$msg_error [$key] = 'Vérifiez que l\'une des images ne dépasse pas 300Ko.';
+		continue;
+		}
 		
 		}
 		

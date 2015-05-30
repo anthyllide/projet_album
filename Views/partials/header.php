@@ -8,7 +8,22 @@
 <div class="clear"></div>
 
 <div id="login">
+<?php 
+if (isset($_SESSION['user_login']))
+{
+?>
+<p>Bonjour, <?php echo $_SESSION['user_login'];?></p>
+<p><a href="<?php echo WEB_DIR_URL.'Views/upload.php'; ?>">Admin</a></p>
+<p><a href="<?php echo WEB_DIR_URL.'Views/logout.php'; ?>">Déconnexion</a></p>
+<?php
+}
+else
+{
+?>
 <p>Non connecté</p>
-<a href="Views/upload.php">Login</a>
+<p><a href="<?php echo WEB_DIR_URL.'Views/login.php'; ?>">Connexion</a></p>
+<?php
+}
+?>
 </div>
 </header>

@@ -14,7 +14,7 @@ $select_theme = $theme1 -> selectTheme();
 	}
 
 
-
+//si le nouveau thème est validé 
 if(isset($_POST['theme_submit'])) 
 {
 
@@ -26,10 +26,20 @@ if(isset($_POST['theme_submit']))
 	{
 	//récupération $_POST['new_theme']
 	$new_theme = strip_tags(trim($_POST['new_theme']));
+	
 	//mise en minuscules
-	$new_theme = strtolower($new_theme);
-	//Transformation de la première lettre en majuscule
-	$new_theme = ucfirst($new_theme);
+	$new_theme = mb_strtolower($new_theme,'UTF-8');
+	
+	//Transformation de la première lettre en majuscule (en tenant compte de l'encodage UTF-8)
+	
+	$count = mb_strlen($new_theme, 'UTF-8');
+
+	$first_upper = mb_substr($new_theme, 0, -$count+1, 'UTF-8');
+	$new_theme = mb_substr($new_theme, 1, $count, 'UTF-8');
+
+	$first_upper = mb_strtoupper($first_upper,'UTF-8');
+
+	$new_theme = $first_upper.$new_theme;
 	
 	$theme2 = new Theme();
 	

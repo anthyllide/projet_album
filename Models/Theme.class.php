@@ -10,6 +10,7 @@ class Theme {
 	public function menuLetter (){
 	
 	$bdd = new Bdd;
+	$bdd->exec("SET NAMES 'UTF8'");
 	
 	$req = $bdd -> query('SELECT * FROM menu');
 	
@@ -33,10 +34,11 @@ class Theme {
 		
 	}
 
-	//Affichage des th�mes dans pages accueil
+	//Affichage des thèmes dans pages accueil
 	public function displayTheme ($id) {
 	
 	$bdd = new Bdd;
+	$bdd->exec("SET NAMES 'UTF8'");
 	
 	$req = $bdd -> prepare('
 	SELECT f.theme nom_theme
@@ -66,10 +68,11 @@ class Theme {
 }
 	
 	
-	//Affichage des themes dans menu d�roulant
+	//Affichage des themes dans menu déroulant
 	public function selectTheme () {
 	
 	$bdd = new Bdd;
+	$bdd->exec("SET NAMES 'UTF8'");
 	
 	$req = $bdd -> query('SELECT theme FROM folders ORDER BY theme');
 
@@ -94,9 +97,11 @@ class Theme {
 	
 	}
 	
+	// Sélection de la lettre
 	public function selectLetter ($id){
 	
 	$bdd = new Bdd;
+	$bdd->exec("SET NAMES 'UTF8'");
 	
 	$req = $bdd -> prepare('SELECT lettre from menu WHERE IDmenu=?');
 	
@@ -120,9 +125,16 @@ class Theme {
 	// insertion nouveau theme dans bdd
 	public function createTheme ($new_theme) {
 	
+	$bdd = new Bdd;
+	$bdd->exec("SET NAMES 'UTF8'");
+	
 	$first_letter = substr($new_theme,0);
 	
-	$bdd = new Bdd;
+	$special = array('Â','È','É','Ç','â','à','é','è','ë','ê','ï','ç');
+	
+	$normal = array('A','E','E','C','a','a','e','e','e','e','i','c');
+	
+	$first_letter = str_replace($special,$normal,$first_letter);
 	
 	$select_theme = $this -> selectTheme();
 	
@@ -152,13 +164,13 @@ class Theme {
 		}
 		else
 		{
-		$msg_error ='Ce theme existe déjà.';
+		$msg_error ='Ce theme existe déjà .';
 		return $msg_error;
 		}
 	}
 	else
 	{
-	$msg_error ='Une erreur s\'est produite lors de la récupération des thèmes dans le BDD.';
+	$msg_error ='Une erreur s\'est produite lors de la rÃ©cupÃ©ration des thèmes dans le BDD.';
 	return $msg_error;
 	}
 	

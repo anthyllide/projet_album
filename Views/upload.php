@@ -2,6 +2,7 @@
 session_start();
 require_once ('../config.php'); 
 require ('../autoload_2.php');
+require_once('../Controllers/process_session.php');
 require_once ('../Controllers/process_theme.php');
 require_once ('../Controllers/process_image.php');
 
@@ -74,7 +75,7 @@ elseif (isset($_SESSION['msg_success']))
 <div id="form_select">
 <label for="theme">Choisissez votre thème</label>
 <select name="theme" id="theme" value="Thèmes disponibles">
-<option selected value="">Liste des thèmes</option>
+<option selected value="defaut">Liste des thèmes</option>
 
 <?php 
 foreach ($theme1 as $id => $value)
@@ -103,7 +104,7 @@ echo $value;
 <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
 <input type="file" name="upload[]" id="upload" multiple />
 <input type="submit" name="upload_submit" id="upload_submit" value="Envoyer" />
-<p>formats acceptés : jpeg, png, gif - taille maximum : 300Ko</p>
+<p>formats acceptés : jpeg, dimensions max : 600x450px, poids maximum : 300Ko</p>
 
 </div>
 

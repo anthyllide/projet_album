@@ -1,13 +1,16 @@
 <?php
-if (isset($_POST['theme'])){
+
 
 
 	if(isset($_POST['upload_submit']))
 	{
+		if($_POST['theme'] !== 'defaut')
+		{
+	
 	
 	$files = $_FILES['upload'];
-	
-	$theme = strtolower($_POST['theme']);
+		
+	$theme = mb_strtolower($_POST['theme'],'UTF-8');
 	
 	$image = new Image;
 	
@@ -21,8 +24,15 @@ if (isset($_POST['theme'])){
 		{
 		$msg_error = $upload_image;
 		}
+		
+		}
+		else
+		{
+		$msg_error = 'Sélectionnez un thème';
+		}
 	
 	}
 	
-	
-}	
+
+
+

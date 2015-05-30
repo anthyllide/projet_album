@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 16 Mai 2015 à 20:26
+-- Généré le :  Sam 30 Mai 2015 à 11:37
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -28,19 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `folders` (
   `IDfolder` int(11) NOT NULL AUTO_INCREMENT,
-  `theme` varchar(30) COLLATE utf8_bin NOT NULL,
+  `theme` varchar(30) CHARACTER SET utf8 COLLATE utf8_roman_ci NOT NULL,
   `lettre` varchar(1) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`IDfolder`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=26 ;
-
---
--- Contenu de la table `folders`
---
-
-INSERT INTO `folders` (`IDfolder`, `theme`, `lettre`) VALUES
-(21, 'Cheval', 'C'),
-(24, 'Bateau', 'B'),
-(25, 'Soleil', 'S');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -54,30 +45,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   `filenameTiny` varchar(40) COLLATE utf8_bin NOT NULL,
   `theme` varchar(30) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`IDimage`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=27 ;
-
---
--- Contenu de la table `images`
---
-
-INSERT INTO `images` (`IDimage`, `filename`, `filenameTiny`, `theme`) VALUES
-(10, 'cheval-fotolia_03.jpg', '', 'cheval'),
-(11, 'bateau-fotolia_06.jpg', '', 'bateau'),
-(12, 'soleil-fotolia_05.jpg', '', 'soleil'),
-(13, '1', '', 'cheval'),
-(14, 'soleil-image-2', '', 'soleil'),
-(15, 'soleil-image-3.fotolia_02.jpg', '', 'soleil'),
-(16, 'soleil-image-4.jpg', '', 'soleil'),
-(17, 'soleil-image-5.jpg', '', 'soleil'),
-(18, 'soleil-image-6.jpg', '', 'soleil'),
-(19, 'soleil-image-7.jpg', '', 'soleil'),
-(20, 'soleil-image-8.jpg', '', 'soleil'),
-(21, 'cheval-image-2.jpg', '', 'cheval'),
-(22, 'soleil-image-9.jpg', '', 'soleil'),
-(23, 'soleil-image-10.jpg', '', 'soleil'),
-(24, 'soleil-image-11.jpg', '', 'soleil'),
-(25, 'soleil-image-12.jpg', '', 'soleil'),
-(26, 'bateau-image-2.jpg', 'bateau-image-2-tiny.jpg', 'bateau');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -122,6 +90,29 @@ INSERT INTO `menu` (`IDmenu`, `lettre`) VALUES
 (24, 'X'),
 (25, 'Y'),
 (26, 'Z');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `IDuser` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) COLLATE utf8_bin NOT NULL,
+  `password` varchar(32) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`IDuser`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`IDuser`, `login`, `password`) VALUES
+(1, 'choucaxa@hotmail.fr', '23cb12ea281d81b4967b8d4095b80588'),
+(2, 'test@test.fr', '0f30f75903fce41d68ae69111af15bf5'),
+(3, 'al.gonzalez@hotmail.fr', '71bf40ef94511d218d48e4f5eda47669'),
+(4, 'test-1@free.fr', '7caa7da459825dd57dc44e3cdf6a412a');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
